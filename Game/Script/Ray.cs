@@ -12,4 +12,12 @@ public static class RayCast
         Physics.Raycast(rayOrigin, out hitInfo, range);
         return hitInfo;
     }
+
+    public static RaycastHit InteractRay(float range)
+    {
+        RaycastHit hitInfo;
+        Ray rayOrigin = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Physics.Raycast(rayOrigin, out hitInfo, range, 1 << 3);
+        return hitInfo;
+    }
 }

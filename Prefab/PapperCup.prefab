@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1270701015024148412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8819476151047819445}
+  m_Layer: 0
+  m_Name: CapPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8819476151047819445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270701015024148412}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0000004768371, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.184, z: 0}
+  m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1.3333334}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2939418776460259160}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8705607116157268505
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,6 +43,7 @@ GameObject:
   - component: {fileID: 2902176856109976962}
   - component: {fileID: 2537761425353551217}
   - component: {fileID: 5925451662813907054}
+  - component: {fileID: 4116320825903744920}
   m_Layer: 0
   m_Name: PapperCup
   m_TagString: Untagged
@@ -36,6 +68,7 @@ Transform:
   - {fileID: 8392147973138301972}
   - {fileID: 3437964543823490619}
   - {fileID: 4209555663584274392}
+  - {fileID: 8819476151047819445}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2902176856109976962
@@ -50,8 +83,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9141ec0159bd27f45bd9667237773493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  rotateSpeed: 2
+  _moveSpeed: 5
+  _rotateSpeed: 2
 --- !u!54 &2537761425353551217
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -96,6 +129,20 @@ MonoBehaviour:
   _fillMesh: {fileID: 5432841428271917221}
   _fillPointBotton: {fileID: 3437964543823490619}
   _fillPointUp: {fileID: 4209555663584274392}
+--- !u!114 &4116320825903744920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8705607116157268505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 930b686beb05d5c4d9b06bbf4fcc5952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _position: {x: 20.351, y: 1.315, z: -12.164}
+  _rotation: {x: 0, y: 0, z: 0}
 --- !u!1001 &2001232371454119949
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -182,6 +229,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 498466923935613892}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e0e48e18c5f10840b1496e08906a498,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6161754956931286771}
   m_SourcePrefab: {fileID: 100100000, guid: 4e0e48e18c5f10840b1496e08906a498, type: 3}
 --- !u!1 &1658635198079970652 stripped
 GameObject:
@@ -211,6 +262,49 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -28415490263332896, guid: 4e0e48e18c5f10840b1496e08906a498, type: 3}
+--- !u!114 &6161754956931286771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658635198079970652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d010ac404c8a0ab41b6b8e4b5aaf443b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tag: Cup
+  _eventsEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4116320825903744920}
+        m_TargetAssemblyTypeName: PlacingItem, Assembly-CSharp
+        m_MethodName: Enter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _eventsExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4116320825903744920}
+        m_TargetAssemblyTypeName: PlacingItem, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &2039980274513901542 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4e0e48e18c5f10840b1496e08906a498,

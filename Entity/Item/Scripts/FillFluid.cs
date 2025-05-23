@@ -1,6 +1,8 @@
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 
 public class FillFluid : MonoBehaviour
@@ -8,30 +10,29 @@ public class FillFluid : MonoBehaviour
     [SerializeField] private float _fillAmount, _fillSpeed;
     [SerializeField] private GameObject _fillMesh;
     [SerializeField] private Transform _fillPointBotton, _fillPointUp;
-    private bool _filling;
+    private bool _filled;
+    private Action _complete;
 
-    void Start()
-    {
-        StartFill();
-    }
+    public bool filled => _filled;
 
-    public void StartFill()
+    public void StartFill(Action complete)
     {
         _fillMesh.SetActive(true);
-        _filling = true;
+        _complete = complete;
+
+        gameObject.layer = LayerMask.NameToLayer("Default");
+
+        _fillMesh.transform.DOLocalMove(_fillPointUp.localPosition, _fillSpeed).SetEase(Ease.Linear);
+        _fillMesh.transform.DOScale(_fillPointUp.localScale, _fillSpeed).SetEase(Ease.Linear).OnComplete(Filled);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Filled()
     {
-        if (_filling) Fill();
-    }
+        _filled = true;
 
-    private void Fill()
-    {
-        Debug.Log("FILLING");
-        _fillMesh.transform.localPosition = Vector3.Lerp(_fillMesh.transform.localPosition, _fillPointUp.localPosition, _fillSpeed * Time.deltaTime);
-        _fillMesh.transform.localScale = Vector3.Lerp(_fillMesh.transform.localScale, _fillPointUp.localScale, _fillSpeed * Time.deltaTime);
-        //if(_fillMesh.transform.localScale.x >= _fillPointUp.localScale.x) _filling = false;
+        gameObject.layer = LayerMask.NameToLayer("Interact");
+
+        _complete?.Invoke();
+        _complete = null;
     }
 }

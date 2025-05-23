@@ -4,13 +4,13 @@ using System.Numerics;
 using TouchControlsKit;
 using UnityEngine;
 
-public class Grub : MonoBehaviour
+public class Grab : MonoBehaviour
 {
-    [SerializeField] private float range = 3f;
-    [SerializeField] private GameObject point;
+    [SerializeField] private float _range = 3f;
+    [SerializeField] private Transform _point;
 
     private GameObject _item;
-    private RaycastHit _ray => RayCast.RayHit(range);
+    private RaycastHit _ray => RayCast.InteractRay(_range);
 
     // Update is called once per frame
     void Update() => Press();
@@ -27,7 +27,7 @@ public class Grub : MonoBehaviour
         if (!RayItem()) return;
 
         _item = GetPickUp(_ray).gameObject;
-        GetPickUp(_ray).StartTransform(point);
+        GetPickUp(_ray).StartTransform(_point);
     }
 
     private void Throw()

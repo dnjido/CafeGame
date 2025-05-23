@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CapPlace : MonoBehaviour
+{
+    [SerializeField] private Transform _capParent, _capPoint;
+    private bool _hasCap;
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (!other.gameObject.GetComponent<TriggerTag>()) return;
+        if (other.GetComponent<TriggerTag>().triggerTag != "cap") return;
+        Placing(other.gameObject);
+    }
+
+    private void Placing(GameObject cap)
+    {
+        if (cap == null || _hasCap == true) return;
+        if (!_capParent.GetComponent<FillFluid>().filled) return;
+        _hasCap = true;
+        Destroy(cap.GetComponent<Rigidbody>());
+        cap.transform.position = _capPoint.position;
+        cap.transform.rotation = _capPoint.rotation;
+        cap.transform.parent = _capParent;
+        //Destroy(_capPoint);
+    }
+}

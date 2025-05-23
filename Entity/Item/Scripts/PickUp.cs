@@ -1,13 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    public float moveSpeed = 5.0f;
-    public float rotateSpeed = 2.0f;
-    private GameObject _point;
+    public float _moveSpeed = 5.0f;
+    public float _rotateSpeed = 2.0f;
+    private Transform _point;
     private bool _start;
+
+    public event Action GrabEvent;
+    public event Action PutEvent;
 
     // Start is called before the first frame update
     void Start()
@@ -24,14 +28,14 @@ public class PickUp : MonoBehaviour
     // Update is called once per frame
     public void Transform()
     {
-        transform.localPosition = Vector3.Lerp(transform.localPosition, _point.transform.localPosition, moveSpeed * Time.deltaTime);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, _point.transform.localPosition, _moveSpeed * Time.deltaTime);
 
         //Quaternion targetRotation = new Quaternion(0,0,0,0);
         //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
         GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
     }
 
-    public void StartTransform(GameObject point)
+    public void StartTransform(Transform point)
     {
         _point = point;
         _start = true;
@@ -47,5 +51,6 @@ public class PickUp : MonoBehaviour
         //GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().useGravity = true;
         transform.SetParent(null);
+        PutEvent?.Invoke();
     }
 }
