@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2939418776460259160}
   - component: {fileID: 2902176856109976962}
   - component: {fileID: 2537761425353551217}
-  m_Layer: 0
+  - component: {fileID: 2466203298795089857}
+  m_Layer: 3
   m_Name: PapperCap
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20.409243, y: 1.12, z: -10.97}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7500003, y: 0.75, z: 0.7500003}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8658823522929742804}
@@ -46,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9141ec0159bd27f45bd9667237773493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  rotateSpeed: 2
+  _moveSpeed: 5
+  _rotateSpeed: 2
 --- !u!54 &2537761425353551217
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -75,6 +76,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2466203298795089857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8705607116157268505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d010ac404c8a0ab41b6b8e4b5aaf443b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tag: cap
+  _eventsEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  _eventsExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &9196609251130963007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153,6 +173,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cap
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f1e69064fdd3dc4696ba43aae70ca12,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -161,6 +186,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2438989025337556599}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f1e69064fdd3dc4696ba43aae70ca12,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3605025899199814820}
   m_SourcePrefab: {fileID: 100100000, guid: 6f1e69064fdd3dc4696ba43aae70ca12, type: 3}
 --- !u!1 &8314070091267721582 stripped
 GameObject:
@@ -190,6 +219,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3510573957545500005, guid: 6f1e69064fdd3dc4696ba43aae70ca12, type: 3}
+--- !u!114 &3605025899199814820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8314070091267721582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d010ac404c8a0ab41b6b8e4b5aaf443b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tag: cap
+  _eventsEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  _eventsExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &8658823522929742804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6f1e69064fdd3dc4696ba43aae70ca12,

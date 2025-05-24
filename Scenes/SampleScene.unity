@@ -714,6 +714,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8466916272746186047, guid: e862c1ddd0a47084fbf3faadf86399ff,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8705607116157268505, guid: e862c1ddd0a47084fbf3faadf86399ff,
         type: 3}
       propertyPath: m_Name
@@ -5499,7 +5504,7 @@ PrefabInstance:
     - target: {fileID: 397374469784562211, guid: 9f7860073775f6243ae35d360f4f0d6a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.000100000005
+      value: 0.00005
       objectReference: {fileID: 0}
     - target: {fileID: 397374469784562211, guid: 9f7860073775f6243ae35d360f4f0d6a,
         type: 3}
@@ -5509,7 +5514,7 @@ PrefabInstance:
     - target: {fileID: 397374469784562211, guid: 9f7860073775f6243ae35d360f4f0d6a,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.000100000005
+      value: 0.00005
       objectReference: {fileID: 0}
     - target: {fileID: 397374469784562211, guid: 9f7860073775f6243ae35d360f4f0d6a,
         type: 3}
@@ -5597,7 +5602,7 @@ PrefabInstance:
     - target: {fileID: 397374469784562211, guid: 9f7860073775f6243ae35d360f4f0d6a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.000100000005
+      value: 0.00005
       objectReference: {fileID: 0}
     - target: {fileID: 397374469784562211, guid: 9f7860073775f6243ae35d360f4f0d6a,
         type: 3}
@@ -5607,7 +5612,7 @@ PrefabInstance:
     - target: {fileID: 397374469784562211, guid: 9f7860073775f6243ae35d360f4f0d6a,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.000100000005
+      value: 0.00005
       objectReference: {fileID: 0}
     - target: {fileID: 397374469784562211, guid: 9f7860073775f6243ae35d360f4f0d6a,
         type: 3}
@@ -5711,7 +5716,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 850120167}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
