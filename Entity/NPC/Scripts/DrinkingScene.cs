@@ -13,11 +13,11 @@ public class DrinkingScene : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Use"))
-        {
-            SetCamera();
-            StartScene();
-        }
+        //if (Input.GetButtonDown("Use"))
+        //{
+        //    SetCamera();
+        //    StartScene();
+        //}
     }
 
     public void SetCamera()
@@ -42,7 +42,7 @@ public class DrinkingScene : MonoBehaviour
     {
         while (_animator.speed > 0)
         {
-            _animator.speed -= .5f;
+            _animator.speed -= .25f;
             yield return null;
         }
 

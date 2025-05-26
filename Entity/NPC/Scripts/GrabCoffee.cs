@@ -16,15 +16,13 @@ public class GrabCoffee : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.transform.GetComponentInChildren<CapPlace>().hasCap) return;
-        //Destroy(collision.gameObject);
+
         GameObject.FindGameObjectWithTag("Player").GetComponent<CapPlace>();
         FindFirstObjectByType<Grab>().Throw();
         collision.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         collision.transform.SetParent(grabPoint, true);
         collision.transform.position = grabPoint.position;
         collision.transform.rotation = grabPoint.rotation;
-        
-        //Destroy(GetComponent<Rigidbody>());
 
         GetComponent<Animator>().Play("Drinking");
     }
