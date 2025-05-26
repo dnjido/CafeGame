@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using TouchControlsKit;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Grab : MonoBehaviour
 {
@@ -12,14 +13,18 @@ public class Grab : MonoBehaviour
     private GameObject _item;
     private RaycastHit _ray => RayCast.InteractRay(_range);
 
+    public GameObject item => _item;
+
     // Update is called once per frame
     void Update() => Press();
 
     private void Press()
     {
-        if (IsButtonDown()) Throw();
+        //if (IsButtonDown()) Throw();
 
-        if (Input.GetMouseButtonDown(0)) Pick();
+        if (Input.GetMouseButtonDown(0) && !_item) Pick();
+        else if (Input.GetMouseButtonDown(0) && _item) Drop();
+        else if(Input.GetMouseButtonDown(1) && _item) Throw();
     }
 
     private void Pick()
@@ -30,12 +35,19 @@ public class Grab : MonoBehaviour
         GetPickUp(_ray).StartTransform(_point);
     }
 
-    public void Throw()
+    public void Drop()
     {
         if (!_item) return;
 
         _item.GetComponent<PickUp>().StopTransform();
         _item = null;
+    }
+
+    public void Throw()
+    {
+        if (!_item) return;
+        _item.GetComponent<Rigidbody>().AddForce(transform.forward * 500);
+        Drop();
     }
 
     private bool RayItem()

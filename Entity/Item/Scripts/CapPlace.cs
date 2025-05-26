@@ -5,7 +5,7 @@ using UnityEngine;
 public class CapPlace : MonoBehaviour
 {
     [SerializeField] private Transform _capParent, _capPoint;
-    private bool _hasCap;
+    [SerializeField] private bool _hasCap;
 
     public bool hasCap => _hasCap;
 

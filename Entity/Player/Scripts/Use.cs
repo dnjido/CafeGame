@@ -7,13 +7,14 @@ public class Use : MonoBehaviour
 {
     [SerializeField] private float _range = 3f;
 
+    private bool _hasItem => GetComponent<Grab>().item;
     private RaycastHit _ray => RayCast.InteractRay(_range);
 
     void Update() => Press();
 
     private void Press()
     {
-        if (Input.GetMouseButtonDown(0)) Using();
+        if (Input.GetMouseButtonDown(0) && !_hasItem) Using();
     }
 
     private void Using()
