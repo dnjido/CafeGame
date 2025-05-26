@@ -30,7 +30,7 @@ public class Grab : MonoBehaviour
         GetPickUp(_ray).StartTransform(_point);
     }
 
-    private void Throw()
+    public void Throw()
     {
         if (!_item) return;
 

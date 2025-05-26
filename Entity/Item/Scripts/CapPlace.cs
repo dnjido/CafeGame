@@ -7,6 +7,8 @@ public class CapPlace : MonoBehaviour
     [SerializeField] private Transform _capParent, _capPoint;
     private bool _hasCap;
 
+    public bool hasCap => _hasCap;
+
     void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.GetComponent<TriggerTag>()) return;
