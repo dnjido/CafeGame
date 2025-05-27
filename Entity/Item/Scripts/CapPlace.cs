@@ -6,6 +6,7 @@ public class CapPlace : MonoBehaviour
 {
     [SerializeField] private Transform _capParent, _capPoint;
     [SerializeField] private bool _hasCap;
+    [SerializeField] private AudioClip _capAudio;
 
     public bool hasCap => _hasCap;
 
@@ -25,6 +26,7 @@ public class CapPlace : MonoBehaviour
         cap.transform.position = _capPoint.position;
         cap.transform.rotation = _capPoint.rotation;
         cap.transform.parent = _capParent;
+        GetComponentInParent<AudioSource>().PlayOneShot(_capAudio);
         //Destroy(_capPoint);
     }
 }

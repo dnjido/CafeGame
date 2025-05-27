@@ -10,6 +10,7 @@ public class FillFluid : MonoBehaviour
     [SerializeField] private float _fillAmount, _fillSpeed;
     [SerializeField] private GameObject _fillMesh;
     [SerializeField] private Transform _fillPointBotton, _fillPointUp;
+    [SerializeField] private AudioClip _audioStart, _audioEnd;
     private bool _filled;
     private Action _complete;
 
@@ -24,6 +25,8 @@ public class FillFluid : MonoBehaviour
 
         _fillMesh.transform.DOLocalMove(_fillPointUp.localPosition, _fillSpeed).SetEase(Ease.Linear);
         _fillMesh.transform.DOScale(_fillPointUp.localScale, _fillSpeed).SetEase(Ease.Linear).OnComplete(Filled);
+        GetComponent<AudioSource>().PlayOneShot(_audioStart);
+
     }
 
     private void Filled()
@@ -34,5 +37,8 @@ public class FillFluid : MonoBehaviour
 
         _complete?.Invoke();
         _complete = null;
+
+        GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().PlayOneShot(_audioEnd);
     }
 }

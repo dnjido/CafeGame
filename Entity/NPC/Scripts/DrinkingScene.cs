@@ -10,6 +10,9 @@ public class DrinkingScene : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private Camera _sceneCamera;
     [SerializeField] private GameObject _npcSpawn, _endText;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioSource[] _stopAudioSource;
+    [SerializeField] private AudioClip _audioRiser, _audioFX;
 
     private void Update()
     {
@@ -27,6 +30,7 @@ public class DrinkingScene : MonoBehaviour
 
     public void EnableCamera()
     {
+        _audioSource.PlayOneShot(_audioRiser);
         FindObjectOfType<FadeController>().FadeOut(.5f);
         Camera.main.enabled = false;
         _sceneCamera.enabled = true;
@@ -60,9 +64,12 @@ public class DrinkingScene : MonoBehaviour
             yield return null;
         }
 
+        foreach (AudioSource source in _stopAudioSource) source.Stop();
         FindObjectOfType<FadeController>().FadeIn(.01f);
         yield return new WaitForSeconds(1f);
-        _endText.SetActive(true); 
+        _endText.SetActive(true);
+
+        _audioSource.PlayOneShot(_audioFX);
 
         FindObjectOfType<FadeController>().FadeOut(1.5f);
         yield return new WaitForSeconds(1.5f);
