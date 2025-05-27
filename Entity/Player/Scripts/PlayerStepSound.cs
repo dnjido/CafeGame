@@ -16,7 +16,6 @@ public class PlayerStepSound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(GetComponent<CharacterController>().velocity.magnitude);
         if (GetComponent<CharacterController>().velocity.magnitude >= .5f) PlayStep();
     }
 

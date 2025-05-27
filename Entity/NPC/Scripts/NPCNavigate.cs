@@ -15,17 +15,21 @@ public class NPCNavigate : MonoBehaviour
     void Start()
     {
         _agent.SetDestination(_movePoint.position);
+        //_agent.updateRotation = false;
         _moved = true;
+        //transform.DOLookAt(_lookPoint.transform.position, 2f).SetEase(Ease.InOutQuad).OnComplete(() => { _agent.updateRotation = true; });
     }
 
     // Update is called once per frame
     void Update()
     {
         GetComponent<Animator>().SetFloat("Velocity", _agent.velocity.magnitude);
-        if (_moved && _agent.remainingDistance <= _agent.stoppingDistance)
-        {
-            LookAtTarget();
-        }
+
+        Vector3 turnTowardNavSteeringTarget = _agent.steeringTarget;
+
+        Vector3 direction = (_lookPoint.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
     }
 
     void LookAtTarget()

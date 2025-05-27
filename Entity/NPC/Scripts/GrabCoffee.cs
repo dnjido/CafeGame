@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class GrabCoffee : MonoBehaviour
 {
     [SerializeField] private Transform grabPoint;
+    [SerializeField] private GameObject _moneyEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,16 @@ public class GrabCoffee : MonoBehaviour
         collision.transform.position = grabPoint.position;
         collision.transform.rotation = grabPoint.rotation;
 
+        GameObject effect = Instantiate(_moneyEffect, collision.transform.position, _moneyEffect.transform.rotation);
+        effect.transform.DOMoveY(effect.transform.position.y + 1, 1f).OnComplete(() => { RemoveEffect(effect); });
+
         GetComponent<Animator>().Play("Drinking");
+        GetComponent<Animator>().speed = 0;
+    }
+
+    private void RemoveEffect(GameObject effect)
+    {
+        Destroy(effect);
+        GetComponent<Animator>().speed = 1;
     }
 }
