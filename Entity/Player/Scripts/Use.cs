@@ -14,7 +14,7 @@ public class Use : MonoBehaviour
 
     private void Press()
     {
-        if (Input.GetMouseButtonDown(0) && !_hasItem) Using();
+        if (IsButtonDown() && !_hasItem) Using();
     }
 
     private void Using()

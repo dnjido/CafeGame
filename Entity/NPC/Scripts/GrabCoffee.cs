@@ -31,6 +31,9 @@ public class GrabCoffee : MonoBehaviour
 
         GetComponent<Animator>().Play("Drinking");
         GetComponent<Animator>().speed = 0;
+
+        collision.gameObject.GetComponent<Outline>().enabled = false;
+        GetComponent<Outline>().enabled = false;
     }
 
     private void RemoveEffect(GameObject effect)

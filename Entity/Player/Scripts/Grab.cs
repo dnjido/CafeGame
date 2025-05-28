@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Numerics;
 using TouchControlsKit;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class Grab : MonoBehaviour
 {
@@ -46,8 +45,9 @@ public class Grab : MonoBehaviour
     public void Throw()
     {
         if (!_item) return;
-        _item.GetComponent<Rigidbody>().AddForce(transform.forward * 500);
+        Rigidbody rb = _item.GetComponent<Rigidbody>();
         Drop();
+        rb.AddForce(transform.forward * 500);
     }
 
     private bool RayItem()

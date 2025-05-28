@@ -21,6 +21,9 @@ public class CapPlace : MonoBehaviour
     {
         if (cap == null || _hasCap == true) return;
         if (!_capParent.GetComponent<FillFluid>().filled) return;
+        //cap.GetComponent<PickUp>().StopTransform();
+        FindObjectOfType<Grab>().Drop();
+        cap.GetComponent<Outline>().enabled = false;
         _hasCap = true;
         Destroy(cap.GetComponent<Rigidbody>());
         cap.transform.position = _capPoint.position;
